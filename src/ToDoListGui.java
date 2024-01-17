@@ -1,5 +1,6 @@
 import javax.swing.*;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -53,6 +54,15 @@ public class ToDoListGui extends JFrame implements ActionListener {
         this.getContentPane().add(scrollPane);
         this.getContentPane().add(addTaskButton);
     }
+
+    private Font createFont(String resource, float size){
+        String filePath = getClass().getClassLoader().getResource(resource).getPath();
+
+
+        if(filePath.contains("%20")){
+            filePath = getClass().getClassLoader().getResource(resource).getPath()
+                    .replaceAll("%20", " ");
+        }
 
     @Override
     public void actionPerformed(ActionEvent e){
